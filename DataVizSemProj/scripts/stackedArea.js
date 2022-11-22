@@ -6,14 +6,14 @@
 #
 # Created 11/1/2022 by Stevan Plascencia-Gutierrez
 */
-
+{
 
 //Margins
 const margin = {
     top: 25,
     right: 200,
     bottom: 50,
-    left: 50
+    left: 75
 };
 //Dimensions
 const width = 800 - margin.left - margin.right;
@@ -43,11 +43,18 @@ d3.csv("data/saleTrends.csv",
 ).then(
     data => {
 
-
+        /*#############
+        Data Processing
+        #############*/
         var mygroups = ['Other_Sales', 'NA_Sales', 'EU_Sales', 'JP_Sales']
         var stackedData = d3.stack()
             .keys(mygroups)
             (data)
+
+        /*##########
+        Create Axiis
+        ##########*/
+
         //X Axis
         const x = d3.scaleTime()
             .domain(d3.extent(data, d => d.Year))
@@ -55,6 +62,11 @@ d3.csv("data/saleTrends.csv",
         svg.append('g')
             .attr('transform', 'translate(0,+' + height + ')')
             .call(d3.axisBottom(x));
+        svg.append('text')
+            .text('Year')
+            .style('text-anchor', 'middle')
+            .attr('x', width/2)
+            .attr('y', height+30)
 
         //Y Axis
         const y = d3.scaleLinear()
@@ -62,24 +74,22 @@ d3.csv("data/saleTrends.csv",
             .range([height, 0])
         svg.append('g')
             .call(d3.axisLeft(y));
+        svg.append('text')
+            .text('Dollars (Millions)')
+            .style('text-anchor', 'middle')
+            .style('transform', "rotate(-90deg)")
+            .attr('x', -height/2)
+            .attr('y', -40)
 
         //Color palette
         const primary = d3.scaleOrdinal(d3.schemeSet1).domain(mygroups)
         const secondary = d3.scaleOrdinal(d3.schemePastel1).domain(mygroups)
 
-
-         //Highlight
-         var highlight = function (e, d) {
-            d3.selectAll(".myArea").style("opacity", .1)
-            d3.select("." + d).style("opacity", 1)
-        }
-
-        var noHighlight = function (e, d) {
-            d3.selectAll('.myArea').style('opacity', 1)
-        }
+        /*#########
+        Draw Stacks
+        #########*/
 
         //Add Area
-        console.log(stackedData)
         svg.selectAll("myLayers")
             .data(stackedData)
             .join('path')
@@ -97,7 +107,10 @@ d3.csv("data/saleTrends.csv",
             .on('mouseleave', noHighlight)
 
 
-        //Legend
+        /*#########
+        Draw Legend
+        #########*/
+
         var size = 20
         svg.selectAll('saRects')
             .data(mygroups.reverse())
@@ -119,10 +132,27 @@ d3.csv("data/saleTrends.csv",
                 .attr('x', width+ size*1.2)
                 .attr('y', (d ,i) => 10 + i*(size + 5) + ( size/2 ))
                 .style('fill', d => secondary(d))
-                .text(d => d)
+                .text(d => d.replace("_"," "))
                 .attr("text-anchor", 'left')
                 .style('alignment-baseline', 'middle')
                 .on('mouseover', highlight)
                 .on('mouseleave', noHighlight)
-            }
-)
+        })
+
+/*#######
+Functions
+#######*/
+
+//Add Highlight
+let highlight = function (e, d) {
+    d3.selectAll(".myArea").style("opacity", .1)
+    d3.select("." + d).style("opacity", 1)
+}
+
+//Remove Highlight
+let noHighlight = function (e, d) {
+    d3.selectAll('.myArea').style('opacity', 1)
+}
+
+
+}
