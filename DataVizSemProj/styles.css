@@ -1,14 +1,137 @@
+/* Title Page Styles */
+
+.titlePage, #intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fffede;
+    height: 110vh;
+}
 
 
-body{
+
+/*Stacked Area Styles */
+
+.stackedContainer{
+    background-color: aliceblue;
+}
+
+.stackedContainer > .leftSection{
+    width: 33%;
+    padding: auto;
+}
+
+.stackedContainer >.leftSection > div{
+    padding-left: 20%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 50vh;
+    width: 100%;
+}
+
+
+
+.rightGraph{
+    position: sticky;
+    float:right;
+    top: 20vh;
+}
+
+/* Bar Graph Section Styles */
+
+.barContainer{
+    background-color: aliceblue;
+}
+
+#barTitle{
+    padding-top: 5%;
+    margin:0;
+}
+.center{
+    position: sticky;
+    top: 20vh;
+    z-index: 1;
+    width: 700px;
+    padding-left: 20%;
+
+}
+
+.leftRight{
+    height: 200vh;
+}
+
+.leftRight > div{
+    height: 25%;
+}
+
+
+.leftRight > .left{
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 75%;
+}
+
+.leftRight > .right{
+    text-align: center;
+    padding-left: 75%;
+    padding-right: 5%;
+}
+
+
+/* Parrallel Line Section Styles */
+
+.pLineContainer{
+    background-color:lightslategray;
+    max-width: 100%;
+}
+
+#pLineGraph{
+    float: right;
+    width: 66%;
+}
+
+.pLineContainer > .leftSection{
+    width: 20%;
+    padding: auto;
+}
+
+.pLineContainer >.leftSection > div{
+    padding-left: 20%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 110vh;
+    width: 100%;
+}
+
+/* Heatmap Section Styles */
+
+.heatMapContainer{
+    background-color: #aacdbf;
+}
+
+
+/* Base Styles */
+
+.sTitle{
+    margin: 0;
+    padding: 5%;
+}
+
+body {
     text-align: center;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-content: center;
+    margin: 0; 
 }
 
 #sections > div{
-    opacity: .3;
-    height: 100vh;
+    opacity: .05;
 }
 
 #sections div.graph-scroll-active{
@@ -21,7 +144,19 @@ body{
 
 #container{
     position: relative;
+    height: fit-content;
+    min-height: 100vh;
 }
+
+#sections{
+    align-content: center;
+    position: relative;
+} 
+
+
+
+
+
 
 
 

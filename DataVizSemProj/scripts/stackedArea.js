@@ -7,7 +7,10 @@
 # Created 11/1/2022 by Stevan Plascencia-Gutierrez
 */
 {
-
+    /*#########
+      Global 
+    #########*/
+    
 //Margins
 const margin = {
     top: 25,
@@ -19,14 +22,25 @@ const margin = {
 const width = 800 - margin.left - margin.right;
 const height = 480 - margin.top - margin.bottom;
 
-//Create core SVG
-const svg = d3.select('#sec1Graph')
+//Core SVG
+const svg = d3.select('#stackedGraph')
     .append("svg")
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
+//Highlight Functions
+//Add Highlight
+let highlight = function (e, d) {
+    d3.selectAll(".myArea").style("opacity", .1)
+    d3.select("." + d).style("opacity", 1)
+}
+
+//Remove Highlight
+let noHighlight = function (e, d) {
+    d3.selectAll('.myArea').style('opacity', 1)
+}
 
 //Read the data
 d3.csv("data/saleTrends.csv",
@@ -138,21 +152,5 @@ d3.csv("data/saleTrends.csv",
                 .on('mouseover', highlight)
                 .on('mouseleave', noHighlight)
         })
-
-/*#######
-Functions
-#######*/
-
-//Add Highlight
-let highlight = function (e, d) {
-    d3.selectAll(".myArea").style("opacity", .1)
-    d3.select("." + d).style("opacity", 1)
-}
-
-//Remove Highlight
-let noHighlight = function (e, d) {
-    d3.selectAll('.myArea').style('opacity', 1)
-}
-
 
 }

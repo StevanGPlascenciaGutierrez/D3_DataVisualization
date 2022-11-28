@@ -6,20 +6,23 @@
 # Created 11/15/2022 by Stevan Plascencia-Gutierrez
 */
 {
+    /*#########
+      Global 
+    #########*/
 
     //Margins
     const margin = {
         top: 25,
-        right: 200,
-        bottom: 50,
-        left: 25,
+        right: 300,
+        bottom: 100,
+        left: 75,
     };
     //Dimensions
-    const width = 800 - margin.left - margin.right;
-    const height = 480 - margin.top - margin.bottom;
+    const width = 1000 - margin.left - margin.right;
+    const height = 750 - margin.top - margin.bottom;
 
     //Create core SVG
-    const svg = d3.select('#sec5Graph')
+    const svg = d3.select('#pLineGraph')
         .append("svg")
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
@@ -48,14 +51,14 @@
 
             //Get Keys
             let keys = Array.from(grouped.keys())
-
+         
             //Data Manipulation -- Check getTop Desc
             flat = getTop(grouped)
 
             //Color Axis
             const color = d3.scaleOrdinal()
             .domain(keys)
-            .range(['#67cc8e', "#6773cc", "#cc67a5", "#ccc167", "#67a5cc", "#cc8e67", "#8e67cc", '#cc8e67', '#732dd9', "#93d92d", "#d92d3d", '#2dd9c9', "#d9732d", "#2dd973", "#4965fd"])
+            .range(['#67cc8e', "#6773cc", "#cc67a5", "#ccc167", "#67a5cc", "#bfcee7", "#8e67cc", '#ed8f67', '#732dd9', "#93d92d", "#fc6f7c", '#2dd9c9', "#d9732d", "#2dd973", "#4965fd"])
 
             /*############
             Axiis Creation
@@ -94,28 +97,44 @@
                         d3.select("#" + d + 'Axis').call(d3.axisRight().scale(y[d]))
                     }else{
                         d3.select("#" + d + "Axis").call(d3.axisLeft().scale(y[d]))
+                        d3.selectAll("#"+d+'Axis > g > text').style('fill', 'white')
+                        d3.selectAll("#"+d+'Axis > g >  line').style('stroke', 'white')
                     }
+                    d3.selectAll("#"+d+'Axis > path').style('stroke', 'white')
+
                 })
                 .append("text")
                 .style("text-anchor", "middle")
                 .attr("y", -9)
                 .text(d => d)
-                .style("fill", "black")
+                .style("fill", "white")
 
             //Customize Publisher Axis
+            //Color Text
             svg.selectAll('#PublisherAxis > g > text')
                 .attr('fill', d => color(d))
-                .on("mouseover", tHighlight)
+                .attr('class', d =>  "pLine " + (d+"").replace(/\.|\ /g,"_"))
+                .attr('font-size',12)
+                .on("mouseover", highlight)
                 .on('mouseleave', noHighlight)
+
+            //Color Tick
+            svg.selectAll('#PublisherAxis > g > line')
+                .attr('stroke', d => color(d))  
+                .attr('stroke-width',2.5)
+                .attr('class', d =>  "pLine " + (d+"").replace(/\.|\ /g,"_"))
+                .on('mouseover', highlight)
+                .on('mouseleave',noHighlight )  
 
             //Add Bottom Axis Label
             svg.append('g')
                 .attr('id', 'XAxisLabel')
                 .append('text')
                 .text("Total Sales (Millions)")
-                .style('fill','black')
-                .attr('x', width/2)
-                .attr('y', height + 25)
+                .style('fill','white')
+                .attr('x', -height/2)
+                .attr('y', -35)
+                .attr('transform', 'rotate(-90)')
                 .style('text-anchor', "middle")
 
 
@@ -153,8 +172,10 @@
                 .style("fill", "none")
                 .style("stroke", d => color(d[0]))
                 .style("stroke-width", 2.5)
+                .style("stroke-linecap", "round")
+                .style("stroke-linejoin", "round")
                 .style("opacity", 1)
-                .on("mouseover", highlight)
+                .on("mouseover", (e,d) => highlight(e,d[0]))
                 .on('mouseleave', noHighlight)
 
         }
@@ -192,18 +213,17 @@
 
     //Highlight
     let highlight = function (e, d) {
-        d3.selectAll(".pLine").style("opacity", .10)
-        d3.select(".pLine." + (d[0]+"").replace(/\.|\ /g,"_") ).style("opacity", 1).style("stroke-width", 5)
-    }
+        let pub = (d+"").replace(/\.|\ /g,"_")
 
-    let tHighlight = function (e, d) {
-        d3.selectAll(".pLine").style("opacity", .15)
-        d3.select(".pLine." + (d+"").replace(/\.|\ /g,"_") ).style("opacity", 1).style("stroke-width", 5)
+        d3.selectAll('text.'+pub).attr('font-size',16)
+        d3.selectAll(".pLine").style("opacity", .5).style("stroke-dasharray", "15,15")
+        d3.selectAll(".pLine." + pub ).style("opacity", 1).style("stroke-width", 5).style("stroke-dasharray", "1,0")
     }
 
     //No Highlight
     let noHighlight = function (e, d) {
-        d3.selectAll('.pLine').style('opacity', 1).style("stroke-width", 2.5)
+        d3.selectAll('text.pLine').attr('font-size',12)
+        d3.selectAll('.pLine').style('opacity', 1).style("stroke-width", 2.5).style("stroke-dasharray", "1,0")
     }
 
 }

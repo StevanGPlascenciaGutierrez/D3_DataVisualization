@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,52 +10,119 @@
     <script src="scripts/graph-scroll.js"></script>
     <title>(WORK IN PROGRESS)</title>
 </head>
+
 <body>
-    
-    <h1>WIP</h1>
-    <h2>Intro</h2>
-    <p>Video Games have been around for a while now, being enjoyed by many people and growing into a mainstream media <br>
-            
-        </p>
-    </div>
+
 
     <div id="container">
         <div id="sections">
-            <h2>Overall VideoGame Sale Trends by Region Stacked over Time - Stacked Area, Interactive</h2>
-            <p>Talk about the rise of video games, possible peaks and describe the general movement of video games over time</p>
-            <div id="sec1Graph" class="graph">
+            <div class="titlePage">
+                <h1>Video Games</h1>
+                <h2>1980-2015</h2>
+                <h3>Stevan Plascencia-Gutierrez</h3>
             </div>
         </div>
     </div>
     <div id="container">
         <div id="sections">
-            <div class="section">
-                <h2>Bar Plot</h2>
-                <div id="sec2Graph" class="graph"></div>
+            <div id="intro">
+                <h1>Introduction</h1>
+                <p>
+                    Video-games are a favorite past-time for many people nowadays. This scrollytelling experience will
+                    inform you of different trends and overall information of videogames.
+                    <br>
+                    This experience contains graphs on different ascpects of video games.
+                </p>
             </div>
         </div>
     </div>
-    <div id="container">
-        <div id="sections">
-            <div class="section">
-                <h2>Platform Sales - Violins?</h2>
+    <div id="container" class="stackedContainer">
+        <h3 class="sTitle">Regional Video Game Sales <br>
+            <sub>Hover over area to focus</sub>
+        </h3>
+        <div id="stackedGraph" class="rightGraph"></div>
+        <div id="sections" class="leftSection">
+            <div>Video Games weren't always so popular.<br>
+                They had a slow start in the 80s and only in the 2000s did they really become such a big deal.
+                Games produced in the late 2000s have sold the most copies. This could be due to their long time on the
+                market so recent games can be expected to be more in the future.
+            </div>
+            <div>
+                In Japan, games released in all years have sold well
+            </div>
+            <div>
+                In the European Union, games made in the 2000s sold well
+            </div>
+            <div>
+                In North America, games released in all years have sold well
+            </div>
+            <div>
+                In Other Regions, games released in the late 2000s sold well.
             </div>
         </div>
-    </div>
-    <div id="container" >
-        <div id="sections">
-            <div class="section">
-                <h2>Display Rank - Scatter Plot - Interactive</h2>
-                <div id="sec4graph" class="graph"></div>
-            </div>
-        </div>
-    </div>
 
+    </div>
     <div id="container">
-        <div id=sections>
+        <div id="sections">
+            <div id="intro">
+                <h1>Publishers</h1>
+                <p>
+                    Video Game Publishers are companies that release games.
+                    <br>
+                    The following section covers information on the 15 top selling publishers
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="container" class="barContainer">
+        <div class="center">
+            <h2 class="sTitle">Nintendo's Top 10</h2>
+            <div id="barGraph" class="graph"></div>
+        </div>
+        <div id="sections" class="leftRight">
+            <div class="left">
+                Publisher's are often known by their best selling games.
+                Such as how Nintendo is known for Wii Sports and Mario.
+            </div>
+            <div class="right">
+                This Bar Chart will introduce you to different <br>
+                publishers and their most Popular games. Nintendo's most popular game is Wii Sports 
+            </div>
+            <div class="left">Notice the genres of their most popular games. Nintendo's genres are all over the place!
+                <br><sub>Hover over a genre to focus</sub>
+            </div>
+            <div class="right">Feel free to familiarize yourself with all the different publishers
+                <select name="pubBar" id="barSelect">
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="container" class="pLineContainer">
+        <h2 class="sTitle">Publisher Sales by Genre</h2>
+        <div id="pLineGraph" class="graph"></div>
+        <div id="sections" class="leftSection">
+            <div>
+                Here we can see how the top Publishers compete against each other.
+                The powerhouses like Nintendo, Electronic Arts, and Activision tend to out sell all other publishers.
+                Take your time to hover over the publishers to notice how they fare against one another.
+            </div>
+        </div>
+    </div>
+    <div id="container" class="heatMapContainer">
+        <h2 class="sTitle">Publisher Sales by Platform</h2>
+        <div id="heatMapGraph" class="graph"></div>
+        <div id="sections">
+        </div>
+    </div>
+    <div id="container">
+        <div id="sections">
             <div class="section">
-                <h2>Display Sales of Publisher and Genres using parallel graphs</h2>
-                <div id="sec5Graph" class="graph"></div>
+                <h2>Display Platform/Genre Makeup - Pie Chart - Interactive</h2>
+                <select name="platformPie" id="pieSelect">
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                </select>
+                <div id="sec4Graph" class="graph"></div>
             </div>
         </div>
     </div>
@@ -62,6 +130,8 @@
         <div id="sections">
             <div class="section">
                 <h2>Big Boss - Game of the Year - Scatter Plot/Donut/Pie, Interactive, ?Animated? </h2>
+                <div id="decade"></div>
+                <div id="sec6Graph" class="graph"></div>
             </div>
         </div>
     </div>
@@ -71,4 +141,8 @@
 <script src="scripts/stackedArea.js"></script>
 <script src="scripts/pLineChart.js"></script>
 <script src="scripts/barChart.js"></script>
+<script src="scripts/innovativeChart.js"></script>
+<script src="scripts/heatMap.js"></script>
+<script src="scripts/pieChart.js"></script>
+
 </html>
