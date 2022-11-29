@@ -51,7 +51,8 @@
     padding-top: 5%;
     margin:0;
 }
-.center{
+
+.barContainer > .center{
     position: sticky;
     top: 20vh;
     z-index: 1;
@@ -110,12 +111,62 @@
 }
 
 /* Heatmap Section Styles */
-
-.heatMapContainer{
+#container.heatMapContainer{
     background-color: #aacdbf;
 }
 
+.heatMapContainer > .right{
+    position: sticky;
+    top: 10%;
+    float: right;
+    padding-right: 10%;
+    z-index: 1;
+}
 
+.heatMapContainer > .captions{
+    height: 180vh;
+}
+
+.caption-left{
+    padding-top: 10%;
+    height: 100vh;
+}
+
+.caption-right{
+    height: 25vh;
+    padding-left: 70%;
+    padding-right: 20%;
+}
+
+.caption-bottom{
+    height: 20vh;
+}
+
+/* Pie Chart Section Styles */
+
+.pieContainer{
+    background-color: slategray;
+    color: white;
+}
+
+#pieSub{
+    margin-bottom: 10px;
+}
+
+.pieContainer > #sections{
+    height: 75vh;
+}
+
+/* Innovative Chart Section */
+
+.iContainer{
+    background-color:rgb(249, 229, 211);
+    align-content: center;
+}
+
+.decSelect > *{
+    padding: 0 2.5%;
+}
 /* Base Styles */
 
 .sTitle{

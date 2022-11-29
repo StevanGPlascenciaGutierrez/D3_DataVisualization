@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://d3js.org/d3.v7.js"></script>
     <script src="scripts/graph-scroll.js"></script>
-    <title>(WORK IN PROGRESS)</title>
+    <title>Video Games</title>
 </head>
 
 <body>
@@ -18,8 +18,9 @@
         <div id="sections">
             <div class="titlePage">
                 <h1>Video Games</h1>
-                <h2>1980-2015</h2>
+                <h2>1980-2016</h2>
                 <h3>Stevan Plascencia-Gutierrez</h3>
+                <h4>Sgplasce@asu.edu</h4>
             </div>
         </div>
     </div>
@@ -28,10 +29,10 @@
             <div id="intro">
                 <h1>Introduction</h1>
                 <p>
-                    Video-games are a favorite past-time for many people nowadays. This scrollytelling experience will
-                    inform you of different trends and overall information of videogames.
+                    Video-games are a favorite past-time for many people nowadays. <br> This scrollytelling experience will
+                    inform you of different relationships and overall information of videogames.
                     <br>
-                    This experience contains graphs on different ascpects of video games.
+                    This experience contains graphs on different ascpects of video games. <br> After this you should be familiar with popular Video Game Publishers, Platforms, Genres, and their relationships
                 </p>
             </div>
         </div>
@@ -47,7 +48,7 @@
                 Games produced in the late 2000s have sold the most copies. This could be due to their long time on the
                 market so recent games can be expected to be more in the future.
             </div>
-            <div>
+            <div id="JP">
                 In Japan, games released in all years have sold well
             </div>
             <div>
@@ -109,29 +110,69 @@
             </div>
         </div>
     </div>
-    <div id="container" class="heatMapContainer">
-        <h2 class="sTitle">Publisher Sales by Platform</h2>
-        <div id="heatMapGraph" class="graph"></div>
-        <div id="sections">
-        </div>
-    </div>
     <div id="container">
         <div id="sections">
-            <div class="section">
-                <h2>Display Platform/Genre Makeup - Pie Chart - Interactive</h2>
+            <div id="intro">
+                <h1>Platforms</h1>
+                <p>
+                    Platforms are the devices that people play videogames on. The most popular ones today being, the Xbox Series X, PS5, and Nintendo Switch.
+                    <br>
+                    The following section covers information on the top 15 platforms
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="container" class="heatMapContainer">
+        <h2 class="sTitle">Publisher Sales by Platform</h2>
+        <div>This Heat Map shows how many sales a Publisher had on a platform.</div>
+        <div id="heatMapGraph" class="graph right"></div>
+        <div id="sections" class="captions">
+            <div class="caption-left">> <br> Here are the Publishers  <br>></div>
+            <div class="caption-right">^ <br> Here are the Platforms</div>
+            <div class="caption-bottom">You can see how some publishers have preferences 
+                for certain consoles, this tends to be the case since publishers tend to reserve their games for their platforms</div>
+            <div class="caption-bottom">Go ahead and hover over cells to get more information on the sales numbers</div>
+        </div>
+    </div>
+    <div id="container" class="pieContainer">
+        <h2 class="sTitle">Platform Genre Sales</h2>
+        <div id="pieSub">Much like publishers, platforms have preferred genres, or simply genres that sold better on the platform.
+            <br>
+            Select different platforms to see the kinds of genres they were known for
+        </div>
+        <div id="sections">
+            <div>
                 <select name="platformPie" id="pieSelect">
                     <option value="none" selected disabled hidden>Select an Option</option>
                 </select>
-                <div id="sec4Graph" class="graph"></div>
+                <div id="pieGraph" class="graph"></div>
             </div>
         </div>
     </div>
     <div id="container">
         <div id="sections">
+            <div id="intro">
+                <h1>Conclusion</h1>
+                <p>
+                    I hope you have learned a little about video games and the trends and connections between Publishers, Platforms, and Genres.
+                    <br>
+                    Lastly, feel free enjoy and analyze the games of the year for the previous decades
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="container" class="iContainer">
+        <h2 class="sTitle">Game of the Year <br> <sub>by the decade</sub></h2>
+        <div>For fun lets take a look the the game of the year for every year
+            <br>
+            Use the Forward and Back buttons to change the decade
+            <br>
+            Hover over pies for more information
+        </div>
+        <div id="decade" class="decSelect"></div>
+        <div id="innovativeGraph" class="graph"></div>
+        <div id="sections">
             <div class="section">
-                <h2>Big Boss - Game of the Year - Scatter Plot/Donut/Pie, Interactive, ?Animated? </h2>
-                <div id="decade"></div>
-                <div id="sec6Graph" class="graph"></div>
             </div>
         </div>
     </div>

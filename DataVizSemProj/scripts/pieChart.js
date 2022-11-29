@@ -71,7 +71,7 @@
     let noHighlight = function (e, d) {
         inside.transition(2000)
             .attr('fill', 'white')
-        d3.selectAll('.dArc').style('opacity', 1).style("stroke", 'white')
+        d3.selectAll('.dArc').style('opacity', 1).style('stroke', 'black')
         iText.text('')
     }
 
@@ -180,8 +180,9 @@
                 .duration(1000)
                 .attr('d', d3.arc().innerRadius(40).outerRadius(height/2))
                 .attr('fill', d => gColor(d.data.Genre))
-                .attr('stroke', "white")
-                .style('stroke-width', "1px")
+                .attr('stroke-opacity', 0.25)
+                .style('stroke', 'black')
+                .style('stroke-width', "2px")
                 .style('opacity', 1)
         }
         //Update

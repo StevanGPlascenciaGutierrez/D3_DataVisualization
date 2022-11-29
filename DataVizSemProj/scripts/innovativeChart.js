@@ -12,14 +12,14 @@
 
     //Margins
     const margin = {
-        top: 150,
+        top: 125,
         right: 100,
         bottom: 100,
         left: 50,
     };
     //Dimensions
     const width = 1400 - margin.left - margin.right;
-    const height = 800 - margin.top - margin.bottom;
+    const height = 700 - margin.top - margin.bottom;
 
     //Create core SVG
     const svg = d3.select('#innovativeGraph')

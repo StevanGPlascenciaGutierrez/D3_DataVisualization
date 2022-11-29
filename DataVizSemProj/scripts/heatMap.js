@@ -130,6 +130,7 @@
                 .style("padding", "5px")
                 .style('position','fixed')
                 .style('display', 'block')
+
         }
     )
 
@@ -145,7 +146,7 @@
     
     let  mousemove = function(e,d) {
         tooltip
-          .html( d.Publisher+" sold $" + (Math.round(d.Value))+"M <br> of games on the "+ d.Platform)
+          .html( d.Publisher+" sold $" + (Math.round(d.Value))+"M <br> of games for the "+ d.Platform)
           .style("top", (e.clientY-50 ) + "px")
           .style("left",(e.clientX+10) + "px")
       }
